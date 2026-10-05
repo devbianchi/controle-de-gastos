@@ -9,6 +9,7 @@ export function adicionarDespesa(despesas: Despesa[], nova: Despesa): Despesa[] 
     throw new Error('O mês da despesa deve estar entre 1 e 12.');
   }
 
+  // O spread cria uma nova lista e preserva o array recebido sem efeitos colaterais.
   return [...despesas, nova];
 }
 
