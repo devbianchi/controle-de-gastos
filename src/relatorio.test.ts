@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { CATEGORIAS } from './tipos.js';
-import type { Despesa } from './tipos.js';
+import type { CategoriaDespesa, Despesa } from './tipos.js';
 import { descricaoCategoria, formatarRelatorio, matrizCategoriaMes } from './relatorio.js';
 
 describe('descricaoCategoria', () => {
@@ -9,6 +9,10 @@ describe('descricaoCategoria', () => {
     expect(descricaoCategoria('transporte')).toBe('Transporte');
     expect(descricaoCategoria('lazer')).toBe('Lazer');
     expect(descricaoCategoria('moradia')).toBe('Moradia');
+  });
+
+  it('retorna um rótulo genérico para uma categoria desconhecida em runtime', () => {
+    expect(descricaoCategoria('desconhecida' as CategoriaDespesa)).toBe('Categoria desconhecida');
   });
 });
 

@@ -87,6 +87,10 @@ describe('despesasDaCategoria', () => {
     expect(despesasDaCategoria(despesas, 'alimentação')).toEqual([despesas[0], despesas[2]]);
     expect(despesas).toHaveLength(3);
   });
+
+  it('retorna uma lista vazia quando nenhuma despesa pertence à categoria', () => {
+    expect(despesasDaCategoria(despesas, 'lazer')).toEqual([]);
+  });
 });
 
 describe('totalGasto', () => {
