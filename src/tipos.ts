@@ -1,9 +1,17 @@
 /**
- * Union type para representar rigorosamente as categorias de despesas.
- * Usar o tipo 'string' seria muito amplo, permitindo valores inválidos como 'viagem' ou 'investimento'.
+ * Array de categorias ordenadas para a matriz do relatório.
+ * O uso de 'as const' (const assertion) garante que o TypeScript trate o array
+ * como uma tupla de valores literais e somente leitura, impedindo modificações.
  */
-type CategoriaDespesa = 'alimentação' | 'transporte' | 'lazer' | 'moradia';
+export const CATEGORIAS = ['alimentação', 'transporte', 'lazer', 'moradia'] as const;
 
+/**
+ * Tipo utilitário extraído diretamente do array CATEGORIAS.
+ * Isso evita duplicação de código (DRY) e garante que, se uma categoria mudar no array,
+ * o tipo da união será atualizado automaticamente.
+ * Resultado: 'alimentação' | 'transporte' | 'lazer' | 'moradia'
+ */
+export type CategoriaDespesa = typeof CATEGORIAS[number];
 
 /**
  * Union type para representar rigorosamente os meses do ano (1 a 12).
